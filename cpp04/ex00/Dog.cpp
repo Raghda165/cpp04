@@ -18,7 +18,7 @@ Dog :: Dog()
 	std::cout<<"the dog has been created"<<"\n";
 }
 
-Dog:: Dog(const Dog &obj)
+Dog:: Dog(const Dog &obj):Animal(obj)
 {
 	_type = std::string (obj._type);
 }

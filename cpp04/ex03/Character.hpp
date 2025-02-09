@@ -13,10 +13,16 @@
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
  #include "ICharacter.hpp"
+ typedef struct s_list
+{
+	AMateria*			content;
+	struct s_list	*next;
+}t_list;
  class Character: public ICharacter
  {
 	private:
 	  std:: string name;
+	  t_list *unequip_list;
 	AMateria *inventory[4];
 
 	public:

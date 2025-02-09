@@ -19,15 +19,10 @@ MateriaSource:: MateriaSource()
             inventory[i] = NULL;
     }
 	// std::cout <<"the materia constructor has been called"<<"\n";
-
 }
+
 MateriaSource ::MateriaSource (const MateriaSource  &obj)
 {
-	for (int i = 0; i < 4; i++)
-	{
-		if (this->inventory[i])
-			delete inventory[i];
-	}
     for (int i = 0; i < 4; i++)
     {
         if (obj.inventory[i])
@@ -39,34 +34,38 @@ MateriaSource ::MateriaSource (const MateriaSource  &obj)
 
 MateriaSource & MateriaSource:: operator=(const MateriaSource & other)
 {
-	if (this == &other)
-		return (*this);
-	else
+	if (this != &other)
 	{
 		for (int i = 0; i < 4; i++)
 		{
-			if (this->inventory[i])
-				delete inventory[i];
+			if (this->inventory[i]!= NULL)
+			{
+				delete this->inventory[i];
+				this->inventory[i] = NULL;
+			}
 		}
 		for (int i = 0; i < 4; i++)
 		{
 			if (other.inventory[i])
-				inventory[i] = other.inventory[i]->clone();
+				this->inventory[i] = other.inventory[i]->clone();
 			else
-				inventory[i] = NULL;
+				this->inventory[i] = NULL;
 		}
 	}
-	std::cout<<"Copy assignment operator called"<<std::endl;
+	
 	return (*this);
 }
 
 MateriaSource::~MateriaSource()
 {
-	// for (int i = 0; i < 4; i++)
-	// {
-	// 	if (this->inventory[i])
-	// 		delete inventory[i];
-	// }
+	for (int i = 0; i < 4; i++)
+	{
+		if (this->inventory[i]!= NULL)
+		{
+			delete this->inventory[i];
+			this->inventory[i] = NULL;
+		}
+	}
 	// std::cout<<"the MateriaSource destructor has been called"<<"\n";
 }
 
@@ -76,17 +75,18 @@ void MateriaSource::learnMateria(AMateria* a)
 	{
 		if (this->inventory[i]==  NULL)
 		{
-			inventory[i] = a->clone();
+			inventory[i] = a;
 			return ;
 		}
 	}
 }
+
  AMateria* MateriaSource::createMateria(std::string const &type)
  {
 	for (int i = 0; i < 4; i++)
 	{
 		if (this->inventory[i]->getType()==  type)
-			return(this->inventory[i]);
+			return(this->inventory[i]->clone());
 	}
 	return(NULL);
  }

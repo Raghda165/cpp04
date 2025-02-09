@@ -17,7 +17,7 @@ Cat :: Cat()
 	std::cout<<"the cat has been created"<<"\n";
 }
 
-Cat:: Cat(const Cat &obj)
+Cat:: Cat(const Cat &obj):Animal(obj)
 {
 	_type = std::string (obj._type);
 }

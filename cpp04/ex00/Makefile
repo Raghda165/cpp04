@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME = program
-CPPFILES = main.cpp Animal.cpp Dog.cpp Cat.cpp
+CPPFILES = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 CPP = c++
 

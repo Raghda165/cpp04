@@ -18,7 +18,6 @@ int main()
 	int n = 5;
 	Animal **a;
 	a = new Animal*[n];
-
 	for(int i= 0 ; i < n;i++)
 	{
 		if(i < n/2)
@@ -32,5 +31,4 @@ int main()
 		delete a[i];
 	}
 	delete []a;
-
 }

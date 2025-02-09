@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "Dog.hpp"
-#include "Cat.hpp"
+
 Dog :: Dog()
 {
 	this->_type = "dog";
@@ -19,9 +19,10 @@ Dog :: Dog()
 	std::cout<<"the dog has been created"<<"\n";
 }
 
-Dog:: Dog(const Dog &obj)
+Dog:: Dog(const Dog &obj):Animal(obj)
 {
 	_type = std::string (obj._type);
+	this->cerebro=new Brain(*(obj.cerebro));
 }
 
 Dog & Dog:: operator=(const Dog & other)
@@ -30,6 +31,8 @@ Dog & Dog:: operator=(const Dog & other)
 		return (*this);
 	else
 	{
+		delete(cerebro);
+		this->cerebro=new Brain(*(other.cerebro));
 		this->_type  = other._type;
 	}
 	std::cout<<"Copy assignment operator called"<<std::endl;

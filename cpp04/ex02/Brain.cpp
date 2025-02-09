@@ -15,12 +15,20 @@ Brain::Brain()
 {
 	std::cout<<"the Brain of the creature has been created"<<"\n";
 }
-// Brain:: Brain(const Brain &obj){}
+ Brain:: Brain(const Brain &obj){
+	for (int i = 0 ;i < 100;i++)
+		ideas[i] = std::string (obj.ideas[i]);
+	
+ }
 
 Brain  &Brain:: operator=(const Brain & other)
 {
-	if (this == &other)
-		return (*this);
+	if (this != &other)
+	{
+		for (int i = 0 ;i < 100;i++)
+		   ideas[i] = std::string (other.ideas[i]);
+	}
+
 	std::cout<<"Copy assignment operator called"<<std::endl;
 	return (*this);
 }

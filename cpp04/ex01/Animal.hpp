@@ -22,10 +22,10 @@ public:
 	Animal();
 	Animal(const Animal &obj);
 	Animal & operator=(const Animal &other);
-	virtual ~Animal();
+	 virtual ~Animal();
 
 	std::string getType()const;
-	void virtual makeSound()const;
+	void  makeSound()const;
 
 };
 
